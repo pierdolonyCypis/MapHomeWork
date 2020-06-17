@@ -2,7 +2,7 @@ import java.sql.Array;
 import java.util.*;
 
 public class ZooClub {
-    public static  ArrayList<Animal> animals = new ArrayList<>();
+  //  public static  ArrayList<Animal> animals = new ArrayList<>();
     public static Map<Person, ArrayList<Animal>> map = new LinkedHashMap<>();
 
 
@@ -62,7 +62,7 @@ public class ZooClub {
         System.out.println("Введіть вік учасника: ");
         int age = in.nextInt();
 
-        map.put(new Person(age,name),null);
+        map.put(new Person(age,name),new ArrayList<Animal>());
 
     }
     public static void addPetToMember() {
@@ -81,8 +81,7 @@ public class ZooClub {
         Animal a = new Animal(namePet, typePet);
 
         if (map.containsKey(p)) {
-          animals = map.get(p);
-            animals.add(a);
+           map.get(p).add(a);
         }
     }
 
@@ -94,8 +93,10 @@ public class ZooClub {
             System.out.println(p.toString());
         }
         System.out.println(map.values().size());
+
         for(ArrayList<Animal> a: map.values()) {
-            System.out.println(a.toString());
+            for(Animal b: a)
+            System.out.println(b.toString());
         }
 
 
