@@ -1,15 +1,13 @@
+import javafx.util.converter.PercentageStringConverter;
+
 import java.sql.Array;
 import java.util.*;
 
 public class ZooClub {
-  //  public static  ArrayList<Animal> animals = new ArrayList<>();
     public static Map<Person, ArrayList<Animal>> map = new LinkedHashMap<>();
-
-
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-
 
         System.out.println("\t\tВас вітає клуб тварин!");
         while (true) {
@@ -33,12 +31,16 @@ public class ZooClub {
                     break;
                 }
                 case 3: {
-
+                    removePetToMember();
+                    break;
                 }
                 case 4: {
-
+                    removeMemberToClub();
+                    break;
                 }
                 case 5: {
+                    removePetFromAllMember();
+                    break;
 
                 }
                 case 6: {
@@ -62,7 +64,9 @@ public class ZooClub {
         System.out.println("Введіть вік учасника: ");
         int age = in.nextInt();
 
-        map.put(new Person(age,name),new ArrayList<Animal>());
+
+            map.put(new Person(age,name), new ArrayList<>());
+
 
     }
     public static void addPetToMember() {
@@ -85,22 +89,65 @@ public class ZooClub {
         }
     }
 
-    public static void removePetToMember(){}
-    public static void removeMemberToClub(){}
-    public static void removePetFromAllMember(){}
-    public static void showClub(){
-        for(Person p: map.keySet()){
-            System.out.println(p.toString());
-        }
-        System.out.println(map.values().size());
+    public static void removePetToMember(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введіть ім'я власника тварини");
+        String name = in.nextLine();
 
-        for(ArrayList<Animal> a: map.values()) {
-            for(Animal b: a)
-            System.out.println(b.toString());
+        Person key = new Person(name);
+        System.out.println("Цей власник має таких тварин: ");
+
+            if(map.values().size() == 1){
+                if(map.containsKey(key)){
+                    map.get(key).remove(0);
+
+                }
+
+            }
         }
 
+    public static void removeMemberToClub(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введіть учасника якого ви хочете видалити");
+        String name = in.nextLine();
+
+        Person key = new Person(name);
+
+        if(map.containsKey(key)){
+            map.remove(key);
+        }
 
 
     }
+    public static void removePetFromAllMember(){
+        Scanner in = new Scanner(System.in);
+        String typePet = in.nextLine();
 
-}
+        Animal animal = new Animal(typePet);
+        Person person = new Person();
+
+        if(map.containsKey(person)){
+            map.get(person).remove(animal);
+        }
+
+    }
+
+    public static void showClub(){
+
+        for(Person p: map.keySet()) {
+            System.out.println(p.toString());
+
+            for (ArrayList<Animal> a : map.values()) {
+                for (Animal b : a) {
+                    System.out.println(b.toString());
+                }
+            }
+
+            System.out.println(map.values().size());
+
+        }
+            }
+        }
+
+
+

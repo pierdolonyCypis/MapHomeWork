@@ -7,6 +7,10 @@ public class Animal {
         this.typePet = typePet;
     }
 
+    public Animal(String typePet) {
+        this.typePet = typePet;
+    }
+
     public Animal(){}
 
     public String getNamePet() {

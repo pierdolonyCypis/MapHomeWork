@@ -44,12 +44,11 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(age, person.age) &&
-                Objects.equals(name, person.name);
+        return Objects.equals(name, person.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(age, name);
+        return Objects.hash(name);
     }
 }
