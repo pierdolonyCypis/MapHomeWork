@@ -33,10 +33,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "age=" + age +
-                ", name='" + name + '\'' +
-                '}';
+        return "ім'я - " +name+"; вік - " + age;
     }
 
     @Override
@@ -51,4 +48,5 @@ public class Person {
     public int hashCode() {
         return Objects.hash(name);
     }
+
 }

@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Animal {
     private String namePet;
     private String typePet;
@@ -31,9 +33,19 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "namePet='" + namePet + '\'' +
-                ", typePet='" + typePet + '\'' +
-                '}';
+        return  "ім'я тварини - "+namePet+"; тип тварини - " + typePet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return Objects.equals(typePet, animal.typePet);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(typePet);
     }
 }
